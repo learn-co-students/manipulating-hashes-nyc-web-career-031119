@@ -1,8 +1,9 @@
+require "pry"
 def first_challenge
   contacts = {
     "Jon Snow" => {
       name: "Jon",
-      email: "jon_snow@thewall.we", 
+      email: "jon_snow@thewall.we",
       favorite_icecream_flavors: ["chocolate", "vanilla", "mint chip"],
       knows: nil
     },
@@ -14,9 +15,14 @@ def first_challenge
   }
 
   #your code here
+  contacts["Jon Snow"][:favorite_icecream_flavors] << "mint chip"
+  contacts["Jon Snow"][:address] = "The Lord Commander's Rooms, The Wall, Westeros"
 
 
-  #remember to return your newly altered contacts hash!
+  contacts.each do |person, data|
+    data.each do |attribute, value|
+      value.delete("strawberry") if attribute == :favorite_icecream_flavors
+      end
+    end
   contacts
 end
-
